@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.1.5 (2020-05-16)
+* input ports fix parsing connected to output
+
 ## 0.1.4 (2020-05-16)
 * fix connect and disconnect
 

@@ -54,7 +54,7 @@ module ALSA
           connected_to_port_id = matched_from[2]
         end
 
-        matched_from = output.match(/Connected To: (\d):(\d)\z/)
+        matched_from = output.match(/Connecting To: (\d):(\d)\z/)
         if matched_from
           connected_to_type = :output
           connected_to_client_id = matched_from[1]
