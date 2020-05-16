@@ -35,14 +35,14 @@ module ALSA
       input = "#{input.client.id}:#{input.id}" if input.is_a?(Port)
       output = "#{output.client.id}:#{output.id}" if output.is_a?(Port)
 
-      run('-d', input, output)
+      run(input, output)
     end
 
     def disconnect(input, output)
       input = "#{input.client.id}:#{input.id}" if input.is_a?(Port)
       output = "#{output.client.id}:#{output.id}" if output.is_a?(Port)
 
-      run(input, output)
+      run('-d', input, output)
     end
 
     def run(*arguments)
