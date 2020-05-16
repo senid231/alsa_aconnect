@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'open3'
+
 module ALSA
   module Aconnect
     class Cmd
@@ -15,10 +17,12 @@ module ALSA
       end
 
       def run
-        status, out, err = Command.run(@exec, *@arguments)
-        raise Error.new(status.exitstatus, err.join("\n")) if status != 0 || !err.empty?
+        cmd = [@exec, *@arguments].compact.join(' ')
+        out, err, status = Open3.capture3(cmd)
+        code = status.exitstatus
+        raise Error.new code, err.join("\n") unless code.zero?
 
-        out.join("\n")
+        out
       end
     end
   end

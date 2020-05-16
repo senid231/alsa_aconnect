@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'alsa/command'
 require 'alsa/aconnect/version'
 require 'alsa/aconnect/error'
 require 'alsa/aconnect/cmd'

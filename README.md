@@ -24,16 +24,21 @@ Or install it yourself as:
 require 'alsa/aconnect'
 
 def print_client(client)
-  puts "#{client.id} => #{client.name} [type=#{client.type},card=#{client.card},pid=#{client.pid}]"
+  tags = {
+    type: client.type,
+    card: client.card,
+    pid: client.pid
+  }.compact.map { |k, v| "#{k}=#{v}" }.join(',')
+  lines = ["#{client.id} => #{client.name} [#{tags}]"]
   client.ports.each do |port|
     if port.connected_to_type
       connected = "connected to #{port.connected_to_type} #{port.connected_to_client_id}:#{port.connected_to_port_id}"
     else
       connected = 'not connected'
     end
-    puts "  #{port.id} => #{port.name} (#{connected})"
+    lines.push "  #{port.id} => #{port.name} (#{connected})"
   end
-  puts ''
+  puts(*lines, '')
 end
 
 input_clients = ALSA::Aconnect.input_clients

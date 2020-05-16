@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 0.1.2 (2020-05-16)
+* simplify command run
+
 ## 0.1.1 (2020-05-16)
 * fix #connect and #disconnect
 
