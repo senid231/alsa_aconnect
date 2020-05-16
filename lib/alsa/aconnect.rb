@@ -31,15 +31,15 @@ module ALSA
     end
 
     def connect(input, output)
-      input = "#{input.client_id}:#{input.id}" if input.is_a?(Port)
-      output = "#{output.client_id}:#{output.id}" if output.is_a?(Port)
+      input = "#{input.client.id}:#{input.id}" if input.is_a?(Port)
+      output = "#{output.client.id}:#{output.id}" if output.is_a?(Port)
 
       Cmd.run('-d', input, output)
     end
 
     def disconnect(input, output)
-      input = "#{input.client_id}:#{input.id}" if input.is_a?(Port)
-      output = "#{output.client_id}:#{output.id}" if output.is_a?(Port)
+      input = "#{input.client.id}:#{input.id}" if input.is_a?(Port)
+      output = "#{output.client.id}:#{output.id}" if output.is_a?(Port)
 
       Cmd.run(input, output)
     end
